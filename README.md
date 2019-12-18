@@ -17,6 +17,7 @@ pip3 install neovim pynvim
 ## Instalation
 
 ```bash
+# set environment variable $CURL_PATH pointing to curl app container
 # set environment variable $NVIM_BASE pointing to target repo folder
 # it could be ~/.config/nvim
 

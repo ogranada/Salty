@@ -9,7 +9,7 @@ let plug_plugins_path = $NVIM_BASE . '/plugins'
 let plug_path = expand($NVIM_BASE . '/autoload/plug.vim')
 let vimplug_exists=filereadable(plug_path)
 
-let curlPath=expand('~/apps/nvim/bin/curl.exe')
+let curlPath=expand($CURL_PATH . '/curl.exe')
 
 let g:vim_bootstrap_langs = "javascript,typescript,python,html,css"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
