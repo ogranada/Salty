@@ -32,6 +32,14 @@ Plug 'Shougo/deol.nvim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Visual Settings
 Plug 'flazz/vim-colorschemes'
@@ -42,7 +50,6 @@ Plug 'dracula/vim'
 Plug 'flrnd/candid.vim'
 Plug 'flrnd/plastic.vim'
 Plug 'Mcmartelle/vim-monokai-bold'
-Plug 'sainnhe/neon'
 
 " ----------------------------------------
 call plug#end()
