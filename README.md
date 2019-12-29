@@ -19,6 +19,7 @@ pip3 install neovim pynvim
 ```bash
 # set environment variable $CURL_PATH pointing to curl app container
 # set environment variable $NVIM_BASE pointing to target repo folder
+# set environment variable $NVIM_PYTHON_LOG_FILE pointing to remote python plugin logfile path
 # it could be ~/.config/nvim
 
 # For *nix use:
