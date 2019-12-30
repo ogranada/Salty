@@ -42,6 +42,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Visual Settings
+Plug 'mhinz/vim-startify'
 Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
