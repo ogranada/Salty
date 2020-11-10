@@ -1,12 +1,11 @@
-"+*********************+
-"|       PLUGINS       |
-"+---------------------+
-"|     Hdr PLUGINS     |
-"+*********************+
+" nnoremap => No recursive Map (no expand new expressions if are mapped previously)
+" map! => map to insert and command mode
+" imap => map to insert mode
+" cmap => map to command mode
+" vmap => map to visual mode
+" More info here: https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 
-
-
-"+***********************+
+"+-----------------------+
 "|      General Cnf      |
 "+-----------------------+
 
@@ -59,6 +58,10 @@ set titlestring=%F
 syntax on
 set ruler
 set number
+set relativenumber
+set mouse=a
+set splitbelow
+set splitright
 
 " Set paste mode with F2
 set pastetoggle=<F2>
@@ -81,11 +84,22 @@ set guifont=Fira\ Code\ Retina:h12
 
 "+-----------------------+
 "|    End General Cnf    |
-"+***********************+
+"+-----------------------+
 
 
+"+-----------------------+
+"|        CoC Cnf        |
+"+-----------------------+
 
-"+*********************+
+let coc_settings_path = expand($NVIM_BASE . '/config/settings_coc.vim')
+execute "source " . coc_settings_path
+
+"+-----------------------+
+"|    End General Cnf    |
+"+-----------------------+
+
+
+"+---------------------+
 "|       Airline       |
 "+---------------------+
 
@@ -128,69 +142,34 @@ set noshowmode
 
 "+---------------------+
 "|     End Airline     |
-"+*********************+
-
-
-"+***********************+
-"|      Git Changes      |
-"+-----------------------+
-
-set updatetime=100
-let g:signify_sign_add               = '+'
-let g:signify_sign_delete            = '-'
-let g:signify_sign_delete_first_line = '‾'
-let g:signify_sign_change            = '!'
-
-"+-----------------------+
-"|    End Git Changes    |
-"+***********************+
-
-
-"+***********************+
-"|      Win Chooser      |
-"+-----------------------+
-
-nmap  -  <Plug>(choosewin)
-let g:choosewin_overlay_enable = 1
-
-"+-----------------------+
-"|    End Win Chooser    |
-"+***********************+
-
-
-"+*********************+
-"|       Neomake       |
 "+---------------------+
 
-autocmd! BufWritePost,BufEnter * Neomake
 
-let g:neomake_warning_sign = {
-  \ 'text': 'W',
-  \ 'texthl': 'WarningMsg',
-  \ }
-let g:neomake_error_sign = {
-  \ 'text': 'E',
-  \ 'texthl': 'ErrorMsg',
-  \ }
+"+----------------------+
+"|     GIT Explorer     |
+"+----------------------+
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+"+---------------------+
+"|       End Git       |
+"+---------------------+
+
+"+----------------------+
+"|    File Explorer     |
+"+----------------------+
+
+" toggle file explorer
+map <F3> :CocCommand explorer<CR>
+
+" open nerdtree with the current file selected
+" nmap ,t :NERDTreeFind<CR>
 
 "+---------------------+
-"|     End Neomake     |
-"+*********************+
+"|     End File Ex     |
+"+---------------------+
 
-
-"+***********************+
-"|        Deoplete       |
-"+-----------------------+
-
-let g:deoplete#enable_at_startup = 1
 
 "+-----------------------+
-"|      End Deoplete     |
-"+***********************+
-
-
-
-"+***********************+
 "|           Fzf         |
 "+-----------------------+
 
@@ -198,40 +177,26 @@ if executable('fzf')
   " FZF {{{
   " <C-p> or <C-t> to search files
   nnoremap <silent> <C-t> :GFiles -m<cr>
-  nnoremap <silent> <C-p> :GFiles -m<cr>
-
- 
+  nnoremap <silent> <C-p> :GFiles<cr>
 
   nnoremap <C-g> :Rg<Cr>
-
- 
 
   " <M-p> for open buffers
   nnoremap <silent> <M-p> :Buffers<cr>
 
- 
-
   " <M-S-p> for MRU
   nnoremap <silent> <M-S-p> :History<cr>
 
- 
-
   " Use fuzzy completion relative filepaths across directory
   imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
-
- 
 
   " Better command history with q:
   command! CmdHist call fzf#vim#command_history({'right': '40'})
   nnoremap q: :CmdHist<CR>
 
- 
-
   " Better search history
   command! QHist call fzf#vim#search_history({'right': '40'})
   nnoremap q/ :QHist<CR>
-
- 
 
   command! -bang -nargs=* Ack call fzf#vim#ag(<q-args>, {'down': '40%', 'options': --no-color'})
   " }}}
@@ -241,58 +206,9 @@ end
 
 "+-----------------------+
 "|         End Fzf       |
-"+***********************+
-
-
-
-"+**********************+
-"|       NERDTree       |
-"+----------------------+
-
-" toggle nerdtree display
-map <F3> :NERDTreeToggle<CR>
-" open nerdtree with the current file selected
-nmap ,t :NERDTreeFind<CR>
-" don;t show these file types
-let NERDTreeIgnore = ['\.pyc$', '\.pyo$', 'node_modules']
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let g:nerdtree_tabs_open_on_gui_startup=0
+"+-----------------------+
 
 "+----------------------+
-"|     End NERDTree     |
-"+**********************+
-
-
-"+*********************+
-"|       Cursors       |
-"+---------------------+
-
-"*  https://github.com/terryma/vim-multiple-cursors
-
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-
-"+---------------------+
-"|     End Cursors     |
-"+*********************+
-
-
-"+**********************+
 "|     Session Mgmt     |
 "+----------------------+
 
@@ -302,10 +218,10 @@ let g:session_directory = expand('~/.sessions')
 
 "+----------------------+
 "|   End Session Mgmt   |
-"+**********************+
+"+----------------------+
 
 
-"+**********************+
+"+----------------------+
 "|     EditorConfig     |
 "+----------------------+
 
@@ -317,18 +233,38 @@ let g:signify_sign_change            = '!'
 
 "+----------------------+
 "|   End EditorConfig   |
-"+**********************+
+"+----------------------+
 
 
-"+*********************+
+
+"+-----------------------+
+"|         JSDoc         |
+"+-----------------------+
+nnoremap <silent> <C-d> :JsDoc<cr>
+"+-----------------------+
+"|       End JSDoc       |
+"+-----------------------+
+
+
+"+---------------------+
 "|       Themes        |
 "+---------------------+
 
-" colorscheme onedark
 " colorscheme corvine_light
 " colorscheme dracula
-colorscheme monokai-bold
+colorscheme onedark
+colorscheme seoul256
 
 "+---------------------+
 "|     End Themes      |
-"+*********************+
+"+---------------------+
+
+"+---------------------+
+"|       Terminal      |
+"+---------------------+
+
+nnoremap <leader><C-t> <ESC>:25spl\|terminal<CR>i
+
+"+---------------------+
+"|    End Terminal     |
+"+---------------------+

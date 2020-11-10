@@ -1,7 +1,7 @@
-let start_path = expand($NVIM_BASE . '/start.vim')
-let plugins_path = expand($NVIM_BASE . '/plugins.vim')
-let settings_path = expand($NVIM_BASE . '/settings.vim')
-let keymaps_path = expand($NVIM_BASE . '/keymaps.vim')
+let start_path = expand($NVIM_BASE . '/config/start.vim')
+let plugins_path = expand($NVIM_BASE . '/config/plugins.vim')
+let settings_path = expand($NVIM_BASE . '/config/settings.vim')
+let keymaps_path = expand($NVIM_BASE . '/config/keymaps.vim')
 
 if filereadable(start_path)
   execute "source " . start_path
@@ -12,7 +12,6 @@ if filereadable(plugins_path)
 endif
 
 if !exists('g:not_finish_vimplug')
-
   if filereadable(settings_path)
     execute "source " . settings_path
   endif

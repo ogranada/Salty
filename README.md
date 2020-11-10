@@ -7,7 +7,7 @@ A simple neovim configuration
 ## Requirements
 
 ```
-npm install -g neovim typescript javascript-typescript-langserver
+npm install -g neovim
 pip install neovim
 pip3 install neovim pynvim
 ```
