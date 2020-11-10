@@ -100,7 +100,7 @@ execute "source " . coc_settings_path
 
 
 "+---------------------+
-"|       Airline       |
+"|      Lightline      |
 "+---------------------+
 
 " Choose a theme
@@ -109,9 +109,10 @@ let g:lightline = {
 \   'colorscheme': 'wombat',
 \   'active': {
 \     'left': [ [ 'mode', 'paste' ],
-\     [ 'readonly', 'gfbranch', 'filename', 'modified' ] ]
+\     [ 'readonly', 'gfbranch', 'cocstatus', 'filename', 'modified' ] ]
 \   },
 \   'component_function': {
+\     'cocstatus': 'CocStatusDiagnostic',
 \     'gfbranch': 'LightlineFugitive',
 \     'gitbranch': 'fugitive#head',
 \   },
@@ -137,11 +138,24 @@ function! LightlineFugitive()
   return ''
 endfunction
 
+function! CocStatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '✓' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
+endfunction
+
 " disable "-- INSERT --"
 set noshowmode
 
 "+---------------------+
-"|     End Airline     |
+"|    End Lightline    |
 "+---------------------+
 
 

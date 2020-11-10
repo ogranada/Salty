@@ -18,6 +18,7 @@ Plug 'APZelos/blamer.nvim'
 
 " Yet another typescript syntax
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'posva/vim-vue'
 
 " Status bar
 Plug 'itchyny/lightline.vim'
