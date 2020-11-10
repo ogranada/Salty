@@ -22,6 +22,8 @@ Plug 'posva/vim-vue'
 
 " Status bar
 Plug 'itchyny/lightline.vim'
+" Choose Window
+Plug 't9md/vim-choosewin'
 
 " Web Development
 Plug 'mattn/emmet-vim'

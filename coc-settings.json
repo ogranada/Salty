@@ -1,6 +1,11 @@
 {
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
   "explorer.keyMappings.global": {
     "i": false,
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit",
+    "<lead>cr": ["expandable?", "cd", "open"],
 
     "gk": "expandablePrev",
     "gj": "expandableNext",
@@ -20,7 +25,6 @@
       "open"
     ],
     "o": ["expanded?", "collapse", "expand"],
-    "<cr>": ["expandable?", "cd", "open"],
     "e": "open",
     "s": "open:split",
     "S": "open:split:plain",
