@@ -4,3 +4,5 @@ plugins
 autoload
 target
 logs
+.netrwhist
+sessions

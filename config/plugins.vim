@@ -34,8 +34,10 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'do': 'make install'
 \}
 
-" Themes
+" Session Management
 Plug 'mhinz/vim-startify'
+
+" Themes
 Plug 'flazz/vim-colorschemes'
 Plug 'joshdick/onedark.vim'
 Plug 'arzg/vim-corvine'

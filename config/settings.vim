@@ -17,9 +17,6 @@ set binary
 
 set cursorline " To highlight cursor line
 
-"" Fix backspace indent
-set backspace=indent,eol,start
-
 "" Tabs. May be overriten by autocmd rules
 set tabstop=2
 set softtabstop=0
@@ -58,7 +55,7 @@ set titlestring=%F
 syntax on
 set ruler
 set number
-set relativenumber
+nnoremap <leader>r :set relativenumber!<cr>
 set mouse=a
 set splitbelow
 set splitright
@@ -67,6 +64,7 @@ set splitright
 set pastetoggle=<F2>
 set clipboard=unnamed
 set backspace=2
+"" Fix backspace indent
 set backspace=indent,eol,start
 
 " Tab navigation mappings
@@ -173,7 +171,7 @@ let g:choosewin_overlay_enable = 1
 
 
 "+----------------------+
-"|     GIT Explorer     |
+"|         GIT          |
 "+----------------------+
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
@@ -187,6 +185,8 @@ let g:blamer_delay = 500
 
 " toggle file explorer
 map <F3> :CocCommand explorer<CR>
+nmap ,t :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " open nerdtree with the current file selected
 " nmap ,t :NERDTreeFind<CR>
@@ -284,6 +284,40 @@ colorscheme seoul256
 
 "+---------------------+
 "|     End Themes      |
+"+---------------------+
+
+"+---------------------+
+"|      Startify       |
+"+---------------------+
+
+" 
+let g:startify_session_dir = '~/.config/nvim/sessions'
+let g:startify_lists = [
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'files',     'header': ['   Files']            },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ ]
+
+
+let g:startify_custom_header = [
+        \ '                                                                               ',
+        \ '                                                                               ',
+        \ '                                                                               ',
+        \ '   ##########              ######                ######                        ',
+        \ '   #        #                #      ##########                       ##########',
+        \ '           #    ##       ##########         #  ##########   ##               # ',
+        \ '          #    #  ##         #             #   #        #  #  ##            #  ',
+        \ '         #    #     ##       #          # #           ##  #     ##       # #   ',
+        \ '       ##             ##     #           #          ##            ##      #    ',
+        \ '     ##                       ####        #       ##                       #   ',
+        \ '                                                                               ',
+        \ '                                                                               ',
+        \]
+
+
+"+---------------------+
+"|    End Startify     |
 "+---------------------+
 
 "+---------------------+

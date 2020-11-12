@@ -4,7 +4,7 @@
   "explorer.keyMappings.global": {
     "i": false,
     "<cr>": ["expandable?", "expand", "open"],
-    "v": "open:vsplit",
+    "v": ["open:vsplit", "quit"],
     "<lead>cr": ["expandable?", "cd", "open"],
 
     "gk": "expandablePrev",
