@@ -24,7 +24,7 @@ pip install virtualenv virtualenvwrapper
 # You can install extra fonts to use glyph icons in your shell
 brew tap homebrew/cask-fonts
 brew cask install font-hack-nerd-font
-
+```
 
 ## Instalation
 
