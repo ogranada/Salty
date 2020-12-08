@@ -55,6 +55,7 @@ set titlestring=%F
 syntax on
 set ruler
 set number
+filetype plugin indent on
 nnoremap <leader>r :set relativenumber!<cr>
 set mouse=a
 set splitbelow

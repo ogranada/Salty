@@ -19,6 +19,7 @@ Plug 'APZelos/blamer.nvim'
 " Yet another typescript syntax
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'posva/vim-vue'
+Plug 'rust-lang/rust.vim'
 
 " Status bar
 Plug 'itchyny/lightline.vim'
@@ -36,6 +37,9 @@ Plug 'heavenshell/vim-jsdoc', {
 
 " Session Management
 Plug 'mhinz/vim-startify'
+
+" Markers
+Plug 'kshenoy/vim-signature'
 
 " Themes
 Plug 'flazz/vim-colorschemes'
